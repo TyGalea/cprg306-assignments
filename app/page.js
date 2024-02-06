@@ -10,6 +10,9 @@ export default function Page() {
       <p>
         <Link href="/week-3">week-3</Link>
       </p>
+      <p>
+        <Link href="/week-4">week-4</Link>
+      </p>
     </main>
   );
 }
