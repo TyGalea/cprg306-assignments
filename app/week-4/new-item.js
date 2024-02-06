@@ -12,6 +12,9 @@ export default function NewItem() {
     const item = { name, quantity, category };
     console.log(item);
     alert(`Added item: ${name}, quantity: ${quantity}, category: ${category}`);
+    setName("");
+    setQuantity(1);
+    setCategory("produce");
   };
 
   return (
