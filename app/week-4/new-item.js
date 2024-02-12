@@ -39,6 +39,7 @@ export default function NewItem() {
           value={quantity}
           min="1"
           max="99"
+          required
           onChange={(event) => setQuantity(event.target.value)}
         />
         <select
