@@ -27,10 +27,10 @@ export default function ItemList({ items }) {
 
   return (
     <div>
-      <label for="sort">Sort by:</label>
+      <label htmlFor="sort">Sort by:</label>
       <button
         onClick={() => setSortBy("name")}
-        class={
+        className={
           sortBy.localeCompare("name")
             ? "bg-orange-700 p-1 m-2 w-28"
             : "bg-orange-500 p-1 m-2 w-28"
@@ -41,7 +41,7 @@ export default function ItemList({ items }) {
       </button>
       <button
         onClick={() => setSortBy("category")}
-        class={
+        className={
           sortBy.localeCompare("category")
             ? "bg-orange-700 p-1 m-2 w-28"
             : "bg-orange-500 p-1 m-2 w-28"
@@ -52,7 +52,7 @@ export default function ItemList({ items }) {
       </button>
       <button
         onClick={() => setSortBy("grouped category")}
-        class={
+        className={
           sortBy.localeCompare("grouped category")
             ? "bg-orange-700 p-1 m-2 w-28"
             : "bg-orange-500 p-1 m-2 w-28"
@@ -63,11 +63,8 @@ export default function ItemList({ items }) {
       </button>
       {(sortBy === "name" || sortBy === "category") &&
         sortItems.map((item) => (
-          <ul>
-            <li
-              key={item}
-              className="px-4 py-2 bg-slate-800 rounded m-4 max-w-sm"
-            >
+          <ul key={item}>
+            <li className="px-4 py-2 bg-slate-800 rounded m-4 max-w-sm">
               <Item
                 name={item.name}
                 quantity={item.quantity}
@@ -79,13 +76,10 @@ export default function ItemList({ items }) {
 
       {sortBy === "grouped category" &&
         groupedArray.map((array) => (
-          <ul>
+          <ul key={array}>
             <h3 className="text-2xl capitalize">{Object.keys(array)}</h3>
             {array[Object.keys(array)].map((item) => (
-              <li
-                key={item}
-                className="px-4 py-2 bg-slate-800 rounded m-4 max-w-sm"
-              >
+              <li className="px-4 py-2 bg-slate-800 rounded m-4 max-w-sm">
                 <Item
                   name={item.name}
                   quantity={item.quantity}

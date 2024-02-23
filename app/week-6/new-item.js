@@ -9,7 +9,12 @@ export default function NewItem({ onAddItem }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const item = { name, quantity, category };
+    let id = "";
+    const characters = "HJKhjk123";
+    for (let i = 0; i < 16; i++) {
+      id += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    const item = { id, name, quantity, category };
     console.log(item);
     onAddItem(item);
     setName("");
@@ -19,12 +24,13 @@ export default function NewItem({ onAddItem }) {
 
   return (
     <form
-      class="p-2 m-4 bg-slate-900 text-black max-w-sm w-full"
+      className="p-2 m-4 bg-slate-900 text-black max-w-sm w-full"
       onSubmit={handleSubmit}
     >
-      <div class="m-2">
+      <div className="m-2">
+        <h2 className="text-2xl font-bold text-white p-2">Add New Item</h2>
         <input
-          class="w-full text-black py-2 px-4 rounded"
+          className="w-full text-black py-2 px-4 rounded"
           type="text"
           value={name}
           placeholder="Item name"
@@ -32,9 +38,9 @@ export default function NewItem({ onAddItem }) {
           onChange={(event) => setName(event.target.value)}
         />
       </div>
-      <div class="flex justify-between m-2">
+      <div className="flex justify-between m-2">
         <input
-          class="text-black py-2 px-2 w-20 rounded"
+          className="text-black py-2 px-2 w-20 rounded"
           type="number"
           value={quantity}
           min="1"
@@ -43,7 +49,7 @@ export default function NewItem({ onAddItem }) {
           onChange={(event) => setQuantity(event.target.value)}
         />
         <select
-          class="text-black py-2 px-4 w-40 rounded"
+          className="text-black py-2 px-4 w-40 rounded"
           value={category}
           onChange={(event) => setCategory(event.target.value)}
         >
@@ -61,7 +67,7 @@ export default function NewItem({ onAddItem }) {
       </div>
       <div className="m-2">
         <button
-          class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+          className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
           type="submit"
         >
           +
