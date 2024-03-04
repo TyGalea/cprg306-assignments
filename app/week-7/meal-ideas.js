@@ -30,7 +30,10 @@ export default function MealIdeas({ ingredient }) {
       {meals === null && <p>No meal ideas found for {ingredient}.</p>}
       <ul>
         {meals?.map((item) => (
-          <li key={item.id}>
+          <li
+            key={item.id}
+            className="p-2 m-1 bg-slate-800 hover:bg-orange-800 cursor-pointer"
+          >
             <p>{item.strMeal}</p>
           </li>
         ))}
