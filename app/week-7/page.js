@@ -8,7 +8,7 @@ import { useState } from "react";
 
 export default function Page() {
   const [items, setItems] = useState(itemsData);
-  const [selectedItemName, setSelectedItemName] = useState("bread");
+  const [selectedItemName, setSelectedItemName] = useState("");
 
   const handleAddItem = (item) => {
     setItems([...items, item]);
@@ -20,7 +20,6 @@ export default function Page() {
       ""
     );
     name = name.split(",")[0];
-    alert(name);
     setSelectedItemName(name);
   };
 
