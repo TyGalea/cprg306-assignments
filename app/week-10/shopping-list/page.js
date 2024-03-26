@@ -6,7 +6,11 @@ import MealIdeas from "./meal-ideas.js";
 import { useState } from "react";
 import { useUserAuth } from "./../_utils/auth-context";
 import Link from "next/link";
-import { getItems, addItem } from "./../_services/shopping-list-services";
+import {
+  getItems,
+  addItem,
+  deleteItem,
+} from "./../_services/shopping-list-services";
 import { useEffect } from "react";
 
 export default function Page() {
@@ -32,6 +36,15 @@ export default function Page() {
     const id = addItem(user.uid, item);
     item.id = id;
     setItems([...items, item]);
+  };
+
+  const handleDeleteItem = (name) => {
+    const item = items.find((item) => item.name === name);
+    deleteItem(user.uid, item);
+    const rItems = [...items];
+    const index = rItems.indexOf(item);
+    rItems.splice(index, 1);
+    setItems(rItems);
   };
 
   const handleItemSelect = (name) => {
@@ -60,7 +73,11 @@ export default function Page() {
       <div className="flex">
         <div className="flex-1md m-2">
           <NewItem onAddItem={handleAddItem} />
-          <ItemList items={items} onItemSelect={handleItemSelect} />
+          <ItemList
+            items={items}
+            onItemSelect={handleItemSelect}
+            onItemDelete={handleDeleteItem}
+          />
         </div>
         <div className="flex-1 max-w-sm m-2">
           <MealIdeas ingredient={selectedItemName} />
